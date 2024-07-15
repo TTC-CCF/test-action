@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
     test-array-secret:
         runs-on: ubuntu-latest
-        environment: ''
+        environment: 
         steps:
             - name: print-secret
               run: echo "hello!"
