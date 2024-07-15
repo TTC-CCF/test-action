@@ -1,0 +1,11 @@
+name: test-action
+
+on: workflow_dispatch
+
+jobs:
+    test-array-secret:
+        runs-on: ubuntu-latest
+        environment: ''
+        steps:
+            - name: print-secret
+              run: echo "hello!"
