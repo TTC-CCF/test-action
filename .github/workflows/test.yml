@@ -12,7 +12,7 @@ on:
 jobs:
     test-array-secret:
         runs-on: ubuntu-latest
-        environment: 
+        environment: ${{ inputs.env }}
         steps:
             - name: print-secret
               run: echo "hello!"
