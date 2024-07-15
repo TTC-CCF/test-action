@@ -1,6 +1,13 @@
 name: test-action
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      env: 
+        type: choice
+        options:
+          - approve
+          - 
 
 jobs:
     test-array-secret:
