@@ -2,17 +2,29 @@ name: test-action
 
 on: 
   workflow_dispatch:
-    inputs:
-      env: 
-        type: choice
-        options:
-          - approve
-          - 
 
 jobs:
-    test-array-secret:
+    test1:
         runs-on: ubuntu-latest
         environment: ${{ inputs.env }}
         steps:
             - name: print-secret
-              run: echo "hello!"
+              run: echo "::notice title=test1::This is output from job test1"
+
+    test2:
+        needs: test1
+        runs-on: ubuntu-latest
+        steps:
+          - run: echo '::notice title=test2::This is the output from job test2'
+
+    test3:
+        needs: test2
+        runs-on: ubuntu-latest
+        steps:
+          - run: echo '::notice title=test3::This is the output from job test3'
+
+    test4:
+        needs: test1
+        runs-on: ubuntu-latest
+        steps:
+          - run: echo '::notice title=test4::This is the output from job test4'
