@@ -10,11 +10,9 @@ jobs:
         steps:
             - run: |
                 a='1,2,3,4,5'
-                IFS=',' read -r -a I <<< "$a"
-                echo $I
-                echo "I=$I" >> $GITHUB_ENV
+                echo "a=($a)" >> $GITHUB_ENV
             - run: |
-                for reg in "${I[@]}"
+                while IFS=',' read -r ele
                 do
-                  echo $reg
-                done
+                  echo $ele
+                done < "$a"
