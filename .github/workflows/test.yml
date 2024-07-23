@@ -20,11 +20,12 @@ jobs:
               exit 1
 
     test3:
-        if: failure()
+        if: always()
         needs: test2
         runs-on: ubuntu-latest
         steps:
-          - run: echo '::notice title=test3::The job test2 has failed'
+          - if: failure()
+            run: echo '::notice title=test3::The job test2 has failed'
 
     test4:
         needs: test1
