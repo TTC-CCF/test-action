@@ -8,9 +8,13 @@ jobs:
         runs-on: ubuntu-latest
         environment: ${{ inputs.env }}
         steps:
-            - run: echo "arr=1,2,3,4,5" >> $GITHUB_ENV
+            - run: |
+                a='1,2,3,4,5'
+                IFS=',' read -r -a I <<< "$a"
+                echo $a
+                echo "a=$a" >> $GITHUB_ENV
             - run: |
                 for reg in "${arr[@]}"
                 do
-                  echo reg
+                  echo $reg
                 done
