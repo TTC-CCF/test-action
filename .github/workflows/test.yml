@@ -12,7 +12,8 @@ jobs:
                 a='1,2,3,4,5'
                 echo "a=$a" >> $GITHUB_ENV
             - run: |
-                while IFS=',' read -a ele
+                IFS=',' read -a arr <<< "$a"
+                for ele in ${arr[@]}
                 do
                   echo $ele
-                done <<< "$a"
+                done
