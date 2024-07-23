@@ -15,13 +15,16 @@ jobs:
         needs: test1
         runs-on: ubuntu-latest
         steps:
-          - run: echo '::notice title=test2::This is the output from job test2'
+          - run: | 
+              echo '::notice title=test2::This is the output from job test2'
+              exit 1
 
     test3:
+        if: failure()
         needs: test2
         runs-on: ubuntu-latest
         steps:
-          - run: echo '::notice title=test3::This is the output from job test3'
+          - run: echo '::notice title=test3::The job test2 has failed'
 
     test4:
         needs: test1
