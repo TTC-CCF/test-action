@@ -10,9 +10,9 @@ jobs:
         steps:
             - run: |
                 a='1,2,3,4,5'
-                echo "a=($a)" >> $GITHUB_ENV
+                echo "a=$a" >> $GITHUB_ENV
             - run: |
-                while IFS=',' read -r ele
+                while IFS=',' read -a ele
                 do
                   echo $ele
                 done <<< "$a"
