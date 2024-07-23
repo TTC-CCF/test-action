@@ -8,27 +8,9 @@ jobs:
         runs-on: ubuntu-latest
         environment: ${{ inputs.env }}
         steps:
-            - name: print-secret
-              run: echo "::notice title=test1::This is output from job test1"
-
-    test2:
-        needs: test1
-        runs-on: ubuntu-latest
-        steps:
-          - run: | 
-              echo '::notice title=test2::This is the output from job test2'
-              exit 1
-
-    test3:
-        if: always()
-        needs: test2
-        runs-on: ubuntu-latest
-        steps:
-          - if: failure()
-            run: echo '::notice title=test3::The job test2 has failed'
-
-    test4:
-        needs: test1
-        runs-on: ubuntu-latest
-        steps:
-          - run: echo '::notice title=test4::This is the output from job test4'
+            - run: echo "arr=1,2,3,4,5" >> $GITHUB_ENV
+            - run: |
+                for reg in "${arr[@]}"
+                do
+                  echo reg
+                done
