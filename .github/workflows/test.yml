@@ -15,6 +15,6 @@ jobs:
                 echo "Hello World!" > hello.txt
                 git add -A
                 git commit -m "chore: test user"
-                git push origin master
+                git push origin ${{ github.ref_name }}
                 
                 
