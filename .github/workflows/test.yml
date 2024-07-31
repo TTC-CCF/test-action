@@ -6,14 +6,15 @@ on:
 jobs:
     test1:
         runs-on: ubuntu-latest
-        environment: ${{ inputs.env }}
+        permissions: write-all        
         steps:
+            - uses: action/checkout@v3
             - run: |
-                a='1,2,3,4,5'
-                echo "a=$a" >> $GITHUB_ENV
-            - run: |
-                IFS=',' read -a arr <<< "$a"
-                for ele in ${arr[@]}
-                do
-                  echo $ele
-                done
+                git config --global user.name "TTC-CCF"
+                git config --global user.email "93956496+TTC-CCF@users.noreply.github.com"
+                echo "Hello World!" > hello.txt
+                git add -A
+                git commit -m "chore: test user"
+                git push origin master
+                
+                
