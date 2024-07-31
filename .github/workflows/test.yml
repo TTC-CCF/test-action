@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         permissions: write-all        
         steps:
-            - uses: action/checkout@v3
+            - uses: actions/checkout@v3
             - run: |
                 git config --global user.name "TTC-CCF"
                 git config --global user.email "93956496+TTC-CCF@users.noreply.github.com"
